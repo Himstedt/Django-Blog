@@ -9,7 +9,7 @@
 
 {% if user.is_authenticated %}
     <div class="form-group">
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         <! -- prevent hackers from stealing data between submitting form -->
         {% csrf_token %}
         {{ form.media }}

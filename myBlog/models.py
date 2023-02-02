@@ -16,8 +16,16 @@ class Category(models.Model):
         #redirect to the homepage
         return reverse('home')
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    bio = models.TextField()
+
+    def __str__(self):
+        return str(self.user)
+
 class Post(models.Model):
     title = models.CharField(max_length=255)
+    header_image = models.ImageField(blank=True, null=True, upload_to="images/")#added this
     title_tag = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = RichTextField(blank=True, null=True)
